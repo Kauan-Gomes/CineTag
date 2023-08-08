@@ -2,10 +2,21 @@ import styles from './Start.module.css'
 import Banner from 'components/Banner'
 import Titulo from 'components/Titulo'
 import Card from 'components/Card'
-import videos from 'json/db.json'
+import { useEffect, useState } from 'react'
+
 
 
 export default function Start() {
+
+    const [videos, setVideos] = useState([]);
+
+    useEffect(() => {
+        fetch('https://my-json-server.typicode.com/Kauan-Gomes/cinetag-api/videos')
+        .then(resposta => resposta.json())
+        .then(dados => {
+            setVideos(dados)
+        })
+    }, [])
     return (
         <>
             
